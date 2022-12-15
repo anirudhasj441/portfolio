@@ -1,13 +1,20 @@
 <template>
     <nav class="nav-bar">
         <div class="container-fluid h-100 d-flex align-items-center justify-content-between">
-            <div class="brand">
-                Portfolio
+            <div class="brand d-flex align-items-center">
+                <img src="../assets/programmer.png" alt="logo" style="width: 3rem;">
+                <!-- <h5 class="my-0 ms-2">
+                    Anirudha Jadhav
+                </h5> -->
             </div>
-            <button v-if="nav_collapse" id="navbar-toggle" class="btn p-0 shadow-none border-0" @click="show_nav=!show_nav"><i class="bi" :class="show_nav ? 'bi-x' : 'bi-list'" style="font-size: 2rem;"></i></button>
-            <ul class="nav-menu h-100 p-0" :style="nav_style" @blur="blurNavBar">
+            <div v-if="nav_collapse" class="toggle-btn" :class="show_nav ? 'open' : ''" @click="show_nav=!show_nav">
+                <div class="hamburger"></div>
+            </div>
+            <!-- <button v-if="nav_collapse" id="navbar-toggle" class="btn p-0 shadow-none border-0" @click="show_nav=!show_nav"><i class="bi" :class="show_nav ? 'bi-x' : 'bi-list'" style="font-size: 2rem;"></i></button> -->
+            <ul class="nav-menu h-100 p-0" :style="nav_style">
                 <li class="px-3"><RouterLink to="/">Home</RouterLink></li>
-                <li class="px-3"><RouterLink to="/about">About</RouterLink></li>
+                <li class="px-3"><RouterLink to="/about">Projects</RouterLink></li>
+                <li class="px-3"><RouterLink to="/resume">Resume</RouterLink></li>
             </ul>
         </div>
     </nav>
@@ -26,13 +33,7 @@ export default{
         }
     },
     methods: {
-        blurNavBar: function(){
-            console.log("blurrrr")
-            let width = window.innerWidth;
-            if(width <= 576){
-                this.show_nav = false;
-            }
-        }
+
     },
     mounted() {
         let width = window.innerWidth;
@@ -119,7 +120,12 @@ export default{
     }
     .nav-menu li{
         width: 100%;
-        height: var(--navbar-height) !important;
+        max-height: 2.75rem !important;
+    }
+
+    .nav-menu li a{
+        width: 100%;
+        text-align: center;
     }
 
     /* .nav-menu li a.router-link-exact-active{
@@ -128,12 +134,65 @@ export default{
 
     #navbar-toggle{
         /* display: block; */
-        color: var(--color-text);
+        color: var(--bs-primary);
         position: absolute;
         top: 50%;
         right: 0;
         transform: translateY(-50%);
         z-index: 9999;
     }
+    .toggle-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: var(--navbar-height);
+        /* background-color: blue; */
+        /* border: 3px solid var(--color-text); */
+        width: 2rem;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger {
+        position: relative;
+        border-radius: 20px;
+        width: 100%;
+        height: 8%;
+        background-color: var(--color-text);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .hamburger::after, .hamburger::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 20px;
+        background-color: var(--color-text);
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger::after{
+        transform: translateY(-200%);
+    }
+    .hamburger::before{
+        transform: translateY(200%);
+    }
+    .toggle-btn.open{
+        transform: rotate(180deg);
+    }
+    .toggle-btn.open .hamburger{
+        background: transparent;
+        box-shadow: none;
+    }
+    .toggle-btn.toggle-btn.open .hamburger::after{
+        transform: rotate(calc(45deg));
+    }
+
+    .toggle-btn.toggle-btn.open .hamburger::before{
+        transform: rotate(-45deg);
+    }
+
 }
 </style>
