@@ -4,7 +4,7 @@ import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
-  <header>
+  <header style="position: sticky; top: 0; z-index: 9999;">
     <NavBar/>
   </header>
   <RouterView />
