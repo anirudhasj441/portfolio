@@ -2,3 +2,5 @@
 **/migrations/
 **/my.cnf
 *.log
+**/media/
+**/static/admin/
