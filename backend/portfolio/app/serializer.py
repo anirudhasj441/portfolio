@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.utils.text import Truncator
-from .models import Profile, Projects, Skill, Technologies
+from .models import Profile, Projects, Skill, Technologies, Screenshots
 
 class SkillsSerializers(serializers.ModelSerializer):
     class Meta:
@@ -11,6 +11,11 @@ class TechnologiesSerializers(serializers.ModelSerializer):
     class Meta:
         model = Technologies
         fields = ['name']
+
+class ScreenshotsSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Screenshots
+        fields = ["img"]
 
 class ProfileSerializer(serializers.ModelSerializer):
     skills = SkillsSerializers(read_only =True, many=True)
@@ -31,6 +36,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 class SingleProjectSeralizer(serializers.ModelSerializer):
     technologies = TechnologiesSerializers(read_only=True, many=True)
+    screenshots = ScreenshotsSerializers(read_only=True, many=True)
     class Meta:
         model = Projects
         fields = '__all__'

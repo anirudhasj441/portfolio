@@ -33,7 +33,8 @@
     <section id="projects" class="container pt-2">
       <h1 class="title-text text-center" style="color: var(--color-primary);font-weight: bold;">My Work</h1>
       <div class="project-container mt-5">
-        <div v-for="project in projects" key="project.title" class="project-row">
+        <div v-for="project, key in projects.slice(0,2)" key="project.title" class="project-row mb-5"
+          :class="(key + 1) % 2 == 0 ? 'inverted' : ''">
           <div class="project-banner">
             <img :src="backend.getBasePath + project.img" class="w-100" alt="">
           </div>
@@ -49,22 +50,25 @@
               <span v-for="tech in project.technologies">{{ tech.name }}</span>
             </div>
             <div class="project-links d-flex flex-wrap justify-content-end align-items-center mt-2">
-              <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+              <a v-if="project.git_repo" :href="project.git_repo" class="me-2 project-link" target="_blank"
+                rel="noopener noreferrer">
                 <i class="bi bi-github" style="font-size: 1.5rem;"></i>
               </a>
-              <RouterLink class="ms-2 btn btn-sm button-primary" :to="'/project/'+project.id">Read more</RouterLink>
+              <RouterLink class="btn btn-sm button-secondary" :to="'/project/' + project.id">Read more</RouterLink>
             </div>
           </div>
         </div>
       </div>
-
+      <div class="text-center">
+        <RouterLink class="button-primary btn btn-primary" to="/projects">ALL PROJECTS</RouterLink>
+      </div>
     </section>
   </main>
 </template>
 
 <script>
 import { BackendStore } from '../stores/backend'
-import {RouterLink} from 'vue-router';
+import { RouterLink } from 'vue-router';
 export default {
   components: {
     RouterLink
@@ -219,12 +223,44 @@ export default {
   margin-right: 1rem;
 }
 
+.project-row.inverted {
+  flex-direction: row-reverse !important;
+}
+
+.project-row.inverted .project-detail {
+  position: absolute;
+  /* flex-grow: 1; */
+  width: 60%;
+  /* height: 100%; */
+  left: 0 !important;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+
+.project-row.inverted .project-detail .project-title {
+  text-align: start;
+}
+
+.project-row.inverted .project-links {
+  justify-content: start !important;
+}
+
 @media (max-width: 576px) {
   .project-banner {
+    height: 100%;
     width: 100%;
+    /* display: none; */
+    position: absolute;
+    display: flex;
+    align-items: center;
   }
-  .project-banner img {
-    height: 100% !important;
+
+  .project-row.inverted .project-links {
+    justify-content: end !important;
   }
 
   .card-primary {
@@ -233,28 +269,47 @@ export default {
     padding: 0 !important;
   }
 
-  .project-detail {
+  .project-detail,
+  .project-row.inverted .project-detail {
     width: 100%;
+    height: 100% !important;
+    position: relative;
+    transform: translateY(0);
   }
 
   .project-detail .project-title {
     text-align: start;
   }
 }
+
 .project-link {
   color: var(--color-border-hover);
   transition: color 0.2s ease-in-out;
 }
+
 .project-link:hover {
   color: var(--color-primary);
 }
+
 .button-primary {
+  background-color: var(--color-primary) !important;
+  color: var(--bs-dark) !important;
+  font-weight: bold !important;
+}
+
+.button-primary:hover {
+  box-shadow: 0 0 10px var(--color-primary) !important;
+}
+
+.button-secondary {
   background-color: var(--color-background-mute) !important;
   font-weight: bold !important;
   color: var(--color-text) !important;
 }
-.button-primary:hover {
+
+.button-secondary:hover {
   background-color: var(--color-primary) !important;
   color: var(--vt-c-black-soft) !important;
+  box-shadow: 0 0 10px var(--color-primary) !important;
 }
 </style>

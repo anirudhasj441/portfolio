@@ -26,6 +26,11 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.name)
 
+class Screenshots(models.Model):
+    img = models.ImageField()
+    def __str__(self):
+        return str(self.pk)
+
 class Technologies(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
@@ -39,5 +44,8 @@ class Projects(models.Model):
     start_date = models.DateField(null=True,blank=True)
     end_date = models.DateField(null=True,blank=True)
     is_present = models.BooleanField(default=True)
+    screenshots = models.ManyToManyField(Screenshots)
+    git_repo = models.CharField(max_length=500, null=True, blank=True)
     def __str__(self):
         return str(self.title)
+

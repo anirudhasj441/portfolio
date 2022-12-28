@@ -18,7 +18,7 @@
                     <RouterLink to="/">Home</RouterLink>
                 </li>
                 <li class="px-3">
-                    <RouterLink to="/about">Projects</RouterLink>
+                    <RouterLink to="/projects">Projects</RouterLink>
                 </li>
                 <li class="px-3">
                     <RouterLink to="/resume">Resume</RouterLink>
