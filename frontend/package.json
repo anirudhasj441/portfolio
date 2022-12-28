@@ -12,6 +12,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
+    "pdfjs-dist": "^3.1.81",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"

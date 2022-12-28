@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializer import ProfileSerializer
+from .serializer import ProfileSerializer, ProjectSerializer, SingleProjectSeralizer
 from .models import Profile, Projects
+import json
 # Create your views here.
 
 @api_view()
@@ -33,7 +34,7 @@ def getProfile(request):
 def getProjects(request):
     try:
         projetcs = Projects.objects.all()
-        serializer = ProfileSerializer(projetcs, many=True)
+        serializer = ProjectSerializer(projetcs, many=True)
         data = serializer.data
     except Exception as e:
         response = {
@@ -47,4 +48,26 @@ def getProjects(request):
             "data": data
         }
     finally: 
+        return Response(response)
+
+@api_view(['GET', 'POST'])
+def getProject(request):
+    try:
+        if request.method == "POST":
+            data = json.loads(request.body)
+            id = data["id"]
+            project = Projects.objects.get(pk=id)
+            serializer = SingleProjectSeralizer(project)
+    except Exception as e:
+        response = {
+            "status": False,
+            "message": f"error: {e}"
+        }
+    else:
+        response = {
+            "status": True,
+            "message": "Project Fetch",
+            "data": serializer.data
+        }
+    finally:
         return Response(response)

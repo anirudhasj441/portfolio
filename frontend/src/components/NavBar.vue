@@ -20,9 +20,9 @@
                 <li class="px-3">
                     <RouterLink to="/about">Projects</RouterLink>
                 </li>
-                <!-- <li class="px-3">
+                <li class="px-3">
                     <RouterLink to="/resume">Resume</RouterLink>
-                </li> -->
+                </li>
             </ul>
         </div>
     </div>
