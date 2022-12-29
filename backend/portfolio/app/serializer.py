@@ -26,7 +26,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     desc = serializers.SerializerMethodField()
-    technologies = TechnologiesSerializers(read_only=True, many=True)
+    # technologies = TechnologiesSerializers(read_only=True, many=True)
+    technologies = serializers.StringRelatedField(read_only=True, many=True)
     class Meta:
         model = Projects
         fields = '__all__'
@@ -35,8 +36,10 @@ class ProjectSerializer(serializers.ModelSerializer):
         return Truncator(obj.desc).chars(200)
 
 class SingleProjectSeralizer(serializers.ModelSerializer):
-    technologies = TechnologiesSerializers(read_only=True, many=True)
-    screenshots = ScreenshotsSerializers(read_only=True, many=True)
+    # technologies = TechnologiesSerializers(read_only=True, many=True)
+    technologies = serializers.StringRelatedField(read_only=True, many=True)
+    # screenshots = ScreenshotsSerializers(read_only=True, many=True)
+    screenshots = serializers.StringRelatedField(read_only=True, many=True)
     class Meta:
         model = Projects
         fields = '__all__'

@@ -10,6 +10,9 @@
             <div class="col-lg-8 col-md-6 col-sm-12">
                 <p>{{ project.desc }}</p>
             </div>
+            <div class="d-flex justify-content-end align-items-center flex-wrap">
+                <div v-for="tech in project.technologies" class="ms-3" style="font-weight: bold;">{{ tech }}</div>
+            </div>
             <div class="d-flex justify-content-end align-items-center">
                 <p class="m-0 text-end">{{ project.start_date }} to {{ project.is_present ? 'Present' : project.end_date }}
                 </p>
@@ -24,7 +27,7 @@
         <h1 class="title-text text-center">Screenshots</h1>
         <div class="row g-3">
             <div v-for="img in project.screenshots" class="col-lg-4 col-md-4 col-sm-12">
-                <img class="img-fluid" :src="backend.getBasePath + img.img" alt="">
+                <img class="img-fluid" :src="backend.getBasePath + img" alt="">
             </div>
         </div>
     </section>

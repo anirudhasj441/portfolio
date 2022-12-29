@@ -14,7 +14,7 @@
           <p class="text-bold m-0" style="font-weight: bold;">{{ project.desc }}</p>
         </div>
         <div class="project-technologies d-flex flex-wrap mt-2">
-          <span v-for="tech in project.technologies">{{ tech.name }}</span>
+          <span v-for="tech in project.technologies">{{ tech }}</span>
         </div>
         <div class="project-links d-flex flex-wrap justify-content-end align-items-center mt-2">
           <a v-if="project.git_repo" :href="project.git_repo" class="me-2 project-link" target="_blank"
