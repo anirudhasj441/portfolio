@@ -160,6 +160,8 @@ export default {
   width: 95%;
   padding: 0.8rem;
   background-color: var(--color-background);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   color: white;
 }
@@ -168,10 +170,13 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 95%;
   max-width: 600px;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   background-color: var(--color-primary);
 }
 
@@ -185,14 +190,20 @@ export default {
 }
 
 .project-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .project-banner {
   width: 60%;
   background-color: var(--color-background-mute);
   opacity: 0.2;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -208,7 +219,9 @@ export default {
   /* height: 100%; */
   right: 0;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   z-index: 99;
   /* display: flex;
   flex-direction: column;
@@ -224,7 +237,10 @@ export default {
 }
 
 .project-row.inverted {
-  flex-direction: row-reverse !important;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: reverse !important;
+      -ms-flex-direction: row-reverse !important;
+          flex-direction: row-reverse !important;
 }
 
 .project-row.inverted .project-detail {
@@ -234,7 +250,9 @@ export default {
   /* height: 100%; */
   left: 0 !important;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   z-index: 99;
   /* display: flex;
   flex-direction: column;
@@ -246,7 +264,9 @@ export default {
 }
 
 .project-row.inverted .project-links {
-  justify-content: start !important;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: start !important;
 }
 
 @media (max-width: 576px) {
@@ -255,12 +275,18 @@ export default {
     width: 100%;
     /* display: none; */
     position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .project-row.inverted .project-links {
-    justify-content: end !important;
+    -webkit-box-pack: end !important;
+        -ms-flex-pack: end !important;
+            justify-content: end !important;
   }
 
   .card-primary {
@@ -274,7 +300,9 @@ export default {
     width: 100%;
     height: 100% !important;
     position: relative;
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0);
   }
 
   .project-detail .project-title {
@@ -284,6 +312,8 @@ export default {
 
 .project-link {
   color: var(--color-border-hover);
+  -webkit-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
 }
 
@@ -298,7 +328,8 @@ export default {
 }
 
 .button-primary:hover {
-  box-shadow: 0 0 10px var(--color-primary) !important;
+  -webkit-box-shadow: 0 0 10px var(--color-primary) !important;
+          box-shadow: 0 0 10px var(--color-primary) !important;
 }
 
 .button-secondary {
@@ -310,6 +341,7 @@ export default {
 .button-secondary:hover {
   background-color: var(--color-primary) !important;
   color: var(--vt-c-black-soft) !important;
-  box-shadow: 0 0 10px var(--color-primary) !important;
+  -webkit-box-shadow: 0 0 10px var(--color-primary) !important;
+          box-shadow: 0 0 10px var(--color-primary) !important;
 }
 </style>

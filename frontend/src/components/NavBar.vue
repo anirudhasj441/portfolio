@@ -87,17 +87,27 @@ export default {
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%); */
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     list-style: none;
     margin-bottom: 0 !important;
 }
 
 .nav-menu li {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     height: 100%;
     /* margin-left: 1rem; */
 }
@@ -115,6 +125,8 @@ export default {
         background-color: var(--color-primary);
         position: absolute;
         bottom: 0;
+        -webkit-transition: width 0.3s ease-in;
+        -o-transition: width 0.3s ease-in;
         transition: width 0.3s ease-in;
     }
 
@@ -148,6 +160,8 @@ export default {
         display: block;
         width: 0;
         overflow: hidden;
+        -webkit-transition: width 0.3s ease-in-out;
+        -o-transition: width 0.3s ease-in-out;
         transition: width 0.3s ease-in-out;
     }
 
@@ -171,18 +185,28 @@ export default {
         position: absolute;
         top: 50%;
         right: 0;
-        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
         z-index: 9999;
     }
 
     .toggle-btn {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         height: var(--navbar-height);
         /* background-color: blue; */
         /* border: 3px solid var(--color-text); */
         width: 2rem;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
     }
 
@@ -192,6 +216,8 @@ export default {
         width: 100%;
         height: 8%;
         background-color: var(--color-primary);
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
     }
 
@@ -205,32 +231,45 @@ export default {
         border-radius: 20px;
         background-color: var(--color-primary);
         position: absolute;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
     }
 
     .hamburger::after {
-        transform: translateY(-200%);
+        -webkit-transform: translateY(-200%);
+            -ms-transform: translateY(-200%);
+                transform: translateY(-200%);
     }
 
     .hamburger::before {
-        transform: translateY(200%);
+        -webkit-transform: translateY(200%);
+            -ms-transform: translateY(200%);
+                transform: translateY(200%);
     }
 
     .toggle-btn.open {
-        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+                transform: rotate(180deg);
     }
 
     .toggle-btn.open .hamburger {
         background: transparent;
-        box-shadow: none;
+        -webkit-box-shadow: none;
+                box-shadow: none;
     }
 
     .toggle-btn.toggle-btn.open .hamburger::after {
-        transform: rotate(calc(45deg));
+        -webkit-transform: rotate(calc(45deg));
+            -ms-transform: rotate(calc(45deg));
+                transform: rotate(calc(45deg));
     }
 
     .toggle-btn.toggle-btn.open .hamburger::before {
-        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+                transform: rotate(-45deg);
     }
 
 }
