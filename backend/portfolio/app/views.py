@@ -13,7 +13,7 @@ def index(request):
 @api_view()
 def getProfile(request):
     try:
-        profile = Profile.objects.all()[0]
+        profile = Profile.objects.prefetch_related('skills')[0]
         serializer = ProfileSerializer(profile)
         data = serializer.data
     except Exception as e:

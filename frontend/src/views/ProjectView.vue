@@ -11,10 +11,11 @@
                 <p>{{ project.desc }}</p>
             </div>
             <div class="d-flex justify-content-end align-items-center flex-wrap">
-                <div v-for="tech in project.technologies" class="ms-3" style="font-weight: bold;">{{ tech }}</div>
+                <div v-for="tech in project.technologies" class="ms-3" style="font-weight: bold;">{{ tech.name }}</div>
             </div>
             <div class="d-flex justify-content-end align-items-center">
-                <p class="m-0 text-end">{{ project.start_date }} to {{ project.is_present ? 'Present' : project.end_date }}
+                <p class="m-0 text-end">{{ project.start_date }} to {{ project.is_present ? 'Present' : project.end_date
+}}
                 </p>
                 <a v-if="project.git_repo" :href="project.git_repo" class="ms-2 project-link" target="_blank"
                     rel="noopener noreferrer">
@@ -23,23 +24,32 @@
             </div>
         </div>
     </section>
-    <section id="screenshots" class="container mt-5">
+    <section v-if="project.screenshots.length > 0" id="screenshots" class="container my-5">
         <h1 class="title-text text-center">Screenshots</h1>
         <div class="row g-3">
             <div v-for="img in project.screenshots" class="col-lg-4 col-md-4 col-sm-12">
-                <img class="img-fluid" :src="backend.getBasePath + img" alt="">
+                <img class="img-fluid" :src="backend.getBasePath + img.img" alt="">
             </div>
         </div>
     </section>
+    <footer>
+        <Footer></Footer>
+    </footer>
 </template>
 
 <script>
 import { BackendStore } from '../stores/backend';
+import Footer from '../components/Footer.vue';
 export default {
+    components: {
+        Footer
+    },
     data() {
         return {
             backend: BackendStore(),
-            project: {}
+            project: {
+                screenshots: []
+            }
         }
     },
     methods: {
@@ -52,8 +62,7 @@ export default {
             xhr.open("post", url);
             xhr.onload = () => {
                 let response = JSON.parse(xhr.response);
-                this.project = response.data
-                console.log(response)
+                this.project = response.data;
             }
             xhr.send(JSON.stringify(data))
         }

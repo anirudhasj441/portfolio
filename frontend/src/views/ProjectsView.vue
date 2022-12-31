@@ -14,7 +14,7 @@
           <p class="text-bold m-0" style="font-weight: bold;">{{ project.desc }}</p>
         </div>
         <div class="project-technologies d-flex flex-wrap mt-2">
-          <span v-for="tech in project.technologies">{{ tech }}</span>
+          <span v-for="tech in project.technologies">{{ tech.name }}</span>
         </div>
         <div class="project-links d-flex flex-wrap justify-content-end align-items-center mt-2">
           <a v-if="project.git_repo" :href="project.git_repo" class="me-2 project-link" target="_blank"
@@ -26,14 +26,19 @@
       </div>
     </div>
   </div>
+  <footer>
+    <Footer></Footer>
+  </footer>
 </template>
 
 <script>
 import { BackendStore } from '../stores/backend'
 import { RouterLink } from 'vue-router';
+import Footer from '../components/Footer.vue';
 export default {
   components: {
-    RouterLink
+    RouterLink,
+    Footer
   },
   data() {
     return {

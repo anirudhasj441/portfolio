@@ -30,7 +30,7 @@
         </div>
       </div>
     </section>
-    <section id="projects" class="container pt-2">
+    <section id="projects" class="container py-3">
       <h1 class="title-text text-center" style="color: var(--color-primary);font-weight: bold;">My Work</h1>
       <div class="project-container mt-5">
         <div v-for="project, key in projects.slice(0,2)" key="project.title" class="project-row mb-5"
@@ -47,7 +47,7 @@
               <p class="text-bold m-0" style="font-weight: bold;">{{ project.desc }}</p>
             </div>
             <div class="project-technologies d-flex flex-wrap mt-2">
-              <span v-for="tech in project.technologies">{{ tech }}</span>
+              <span v-for="tech in project.technologies">{{ tech.name }}</span>
             </div>
             <div class="project-links d-flex flex-wrap justify-content-end align-items-center mt-2">
               <a v-if="project.git_repo" :href="project.git_repo" class="me-2 project-link" target="_blank"
@@ -63,22 +63,53 @@
         <RouterLink class="button-primary btn btn-primary" to="/projects">ALL PROJECTS</RouterLink>
       </div>
     </section>
+    <section id="contact" class="container py-3">
+      <h1 class="title-text text-center" style="color: var(--color-primary);">Contact Me</h1>
+      <div class="contacts-row">
+        <div v-if="contact.whatsapp_no" class="me-4">
+          <a class="contact-link" :href="'https://wa.me/'+contact.whatsapp_no" target="_blank">
+            <i class="bi bi-whatsapp" style="font-size: 3rem;"></i>
+          </a>
+        </div>
+        <div v-if="contact.email" class="me-4">
+          <a class="contact-link" :href="'mailto:' + contact.email" target="_blank">
+            <i class="bi bi-envelope-at" style="font-size: 3rem;"></i>
+          </a>
+        </div>
+        <div v-if="contact.linkedin" class="me-4">
+          <a class="contact-link" :href="contact.linkedin" target="_blank">
+            <i class="bi bi-linkedin" style="font-size: 3rem;"></i>
+          </a>
+        </div>
+        <div v-if="contact.insta" class="me-4">
+          <a class="contact-link" :href="contact.insta" target="_blank">
+            <i class="bi bi-instagram" style="font-size: 3rem;"></i>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+  <footer>
+    <Footer></Footer>
+  </footer>
 </template>
 
 <script>
 import { BackendStore } from '../stores/backend'
 import { RouterLink } from 'vue-router';
+import Footer from '../components/Footer.vue';
 export default {
   components: {
-    RouterLink
+    RouterLink,
+    Footer
   },
   data() {
     return {
       backend: BackendStore(),
       bio: "",
       skills: [],
-      projects: []
+      projects: [],
+      contact: {}
     }
   },
   methods: {
@@ -92,6 +123,7 @@ export default {
         let data = response.data;
         this.bio = data.bio;
         this.skills = data.skills;
+        this.contact = data.contacts[0];
       }
       xhr.send();
     },
@@ -125,8 +157,15 @@ export default {
 }
 
 #projects {
-  height: calc(100vh - var(--navbar-height)) !important;
+  min-height: calc(100vh - var(--navbar-height)) !important;
+  
+}
+#contact {
+  min-height: calc(100vh - var(--navbar-height)) !important;
+}
 
+footer { 
+  background-color: var(--color-background-mute);
 }
 
 .attribution {
@@ -269,6 +308,26 @@ export default {
           justify-content: start !important;
 }
 
+.contacts-row {
+  display: flex;
+  flex-wrap: wrap !important;
+  width: max-content !important;
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* transform: translateX(-50%); */
+}
+
+.contact-link {
+  color: var(--color-primary);
+}
+
+.contact-link:hover i {
+  color: var(--color-primary);
+  text-shadow: 0 0 5px var(--color-primary) !important;
+}
+
 @media (max-width: 576px) {
   .project-banner {
     height: 100%;
@@ -307,6 +366,10 @@ export default {
 
   .project-detail .project-title {
     text-align: start;
+  }
+
+  .contacts-row {
+    flex-direction: column !important;
   }
 }
 
