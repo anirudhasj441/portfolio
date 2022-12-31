@@ -13,6 +13,8 @@ class ProfileAdmin(admin.ModelAdmin):
         SkillInLine,
         ContactInLine
     ]
+    class Media:
+        js = ('app/js/inject_tiny.js',)
 
 class ScreenshotInLine(admin.StackedInline):
     model = Screenshots
@@ -28,8 +30,5 @@ class ProjectAdmin(admin.ModelAdmin):
     class Media:
         js = ('app/js/inject_tiny.js',)
 
-admin.site.register(Skill)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Projects, ProjectAdmin)
-admin.site.register(Screenshots)
-admin.site.register(Technologies)
