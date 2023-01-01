@@ -112,7 +112,7 @@ export default {
     /* margin-left: 1rem; */
 }
 
-.nav-menu a.router-link-exact-active {
+.nav-menu a.router-link-active {
     color: var(--color-primary);
 }
 
@@ -130,7 +130,7 @@ export default {
         transition: width 0.3s ease-in;
     }
 
-    .nav-menu li:has(a.router-link-exact-active)::after {
+    .nav-menu li:has(a.router-link-active)::after {
         content: '';
         width: 100%;
         height: 10%;
@@ -175,7 +175,7 @@ export default {
         text-align: center;
     }
 
-    /* .nav-menu li a.router-link-exact-active{
+    /* .nav-menu li a.router-link-active{
         color: var(--bs-primary);
     } */
 
