@@ -188,6 +188,7 @@ footer {
 
 .skill img {
   width: 1.5rem;
+  aspect-ratio: 1 / 1;
   margin-right: 0.3rem;
 }
 

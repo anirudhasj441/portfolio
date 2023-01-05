@@ -1,14 +1,28 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue';
+import Preloader from './components/Preloader.vue';
 </script>
 
 <template>
+  <Preloader v-if="loading"></Preloader>
   <header style="position: sticky; top: 0; z-index: 9999;">
     <NavBar/>
   </header>
   <RouterView />
 </template>
+<script>
+export default {
+  data() {
+    return {
+      loading: true
+    }
+  },
+  mounted() {
+    this.loading = false;
+  }
+}
+</script>
 
 <!-- <style scoped>
 header {
