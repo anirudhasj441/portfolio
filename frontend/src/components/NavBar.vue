@@ -3,7 +3,7 @@
         <div class="container-fluid h-100 d-flex align-items-center justify-content-between">
             <div class="brand d-flex align-items-center">
                 <RouterLink to="/">
-                    <img src="../assets/programmer.png" alt="logo" style="width: 3rem;">
+                    <img src="../assets/programmer.webp" alt="logo" style="width: 3rem;">
                 </RouterLink>
                 <!-- <h5 class="my-0 ms-2">
                     Anirudha Jadhav

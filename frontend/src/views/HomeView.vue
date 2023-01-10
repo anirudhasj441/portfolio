@@ -3,7 +3,7 @@
     <section id="banner" class="container">
       <div class="row h-100">
         <div class="full-height col-lg-6 col-sm-6 order-md-last text-end">
-          <img src="../assets/banner_image.svg" class="" alt="" style="max-width: 100%;height: 100%;">
+          <img src="../assets/banner_image.svg" class="animate__animated animate__fadeInRight" alt="" style="max-width: 100%;height: 100%;">
           <a href="https://storyset.com/technology" target="_blank" class="attribution">Technology illustrations by
             Storyset</a>
         </div>
@@ -22,9 +22,11 @@
       <div class="skill-container mx-auto pb-2 px-1 rounded-3">
         <div class="row g-2 w-100 m-0">
           <div v-for="skill in skills" key="skill" class="col-md-3 col-6 p-0">
-            <div class="skill mx-auto rounded-3 d-flex justify-content-evenly align-items-center">
+            <div class="skill mx-auto rounded-3 d-flex justify-content-between align-items-center">
               <img v-if="skill.icon" :src="backend.getBasePath + skill.icon" alt="">
-              <h6 class="m-0">{{ skill.skill }}</h6>
+              <div class="text-center flex-grow-1">
+                <h6 class="m-0 text-center">{{ skill.skill }}</h6>
+              </div>
             </div>
           </div>
         </div>
@@ -40,8 +42,8 @@
           </div>
           <div class="project-detail px-3">
             <div class="project-title">
-              <p class="m-0" style="color: var(--color-primary);">Feature Project</p>
-              <h2 class="mb-3">{{ project.title }}</h2>
+              <p class="m-0" >Feature Project</p>
+              <h2 class="mb-3" style="color: var(--color-primary);">{{ project.title }}</h2>
             </div>
             <div class="card-primary rounded-2">
               <p class="text-bold m-0" style="font-weight: bold;">{{ project.desc }}</p>
@@ -105,6 +107,7 @@ export default {
   },
   data() {
     return {
+      loading: true,
       backend: BackendStore(),
       bio: "",
       skills: [],
@@ -124,6 +127,7 @@ export default {
         this.bio = data.bio;
         this.skills = data.skills;
         this.contact = data.contacts[0];
+        this.loading = false;
       }
       xhr.send();
     },
@@ -179,11 +183,6 @@ footer {
 
 .attribution:hover {
   color: var(--color-primary);
-}
-
-.title-text {
-  font-size: 3.5rem;
-  font-family: 'Secular One', sans-serif;
 }
 
 .skill img {

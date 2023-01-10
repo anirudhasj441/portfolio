@@ -20,11 +20,12 @@
     position: fixed;
     top:0;
     left:0;
-    z-index: 9999;
+    z-index: 999;
     background-color: var(--color-background);
 }
 h1 {
     color: var(--color-primary);
+    font-family: 'Secular One', sans-serif;
 }
 .dot-1, .dot-2, .dot-3 { 
     margin-left: 0.5rem;

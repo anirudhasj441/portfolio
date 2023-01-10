@@ -1,5 +1,7 @@
 <template>
+  <Preloader v-if="loading"></Preloader>
   <div class="container">
+    <h1 class="title-text text-center my-3" style="color: var(--color-primary)">All Projects</h1>
     <div v-for="project, key in projects" key="project.title" class="project-row mb-5"
       :class="(key + 1) % 2 == 0 ? 'inverted' : ''">
       <div class="project-banner">
@@ -35,15 +37,18 @@
 import { BackendStore } from '../stores/backend'
 import { RouterLink } from 'vue-router';
 import Footer from '../components/Footer.vue';
+import Preloader from '../components/Preloader.vue';
 export default {
   components: {
     RouterLink,
-    Footer
+    Footer,
+    Preloader
   },
   data() {
     return {
       backend: BackendStore(),
-      projects: []
+      projects: [],
+      loading: true
     }
   },
   methods: {
@@ -55,6 +60,7 @@ export default {
         let response = JSON.parse(xhr.response);
         this.projects = response.data
         console.log(response);
+        this.loading = false;
       }
       xhr.send();
     }

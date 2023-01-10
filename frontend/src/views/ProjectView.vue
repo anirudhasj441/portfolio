@@ -1,5 +1,6 @@
 <template>
     <main class="main">
+        <Preloader v-if="loading"></Preloader>
         <section id="banner" class="container pt-3">
             <div class="project-details">
                 <h3 class="title-text text-center m-0">{{ project.title }}</h3>
@@ -44,13 +45,16 @@
 <script>
 import { BackendStore } from '../stores/backend';
 import Footer from '../components/Footer.vue';
+import Preloader from '../components/Preloader.vue';
 export default {
     components: {
-        Footer
+        Footer,
+        Preloader
     },
     data() {
         return {
             backend: BackendStore(),
+            loading: true,
             project: {
                 screenshots: []
             }
@@ -67,6 +71,7 @@ export default {
             xhr.onload = () => {
                 let response = JSON.parse(xhr.response);
                 this.project = response.data;
+                this.loading = false;
             }
             xhr.send(JSON.stringify(data))
         }
