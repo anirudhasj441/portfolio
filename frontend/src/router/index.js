@@ -24,9 +24,18 @@ const router = createRouter({
     {
       path: '/projects',
       name: 'projects',
-      component: () => import('../views/ProjectsView.vue')
+      component: () => import('../views/ProjectsView.vue'),
+      meta: {
+        title: "Projects - Anirudha Jadhav"
+      }
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  let title = to.meta.title ?? "Anirudha Jadhav";
+  document.title = title;
+  next();
+}) 
 
 export default router
