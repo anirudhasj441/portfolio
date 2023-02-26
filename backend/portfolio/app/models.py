@@ -42,6 +42,7 @@ class Projects(models.Model):
     end_date = models.DateField(null=True,blank=True)
     is_present = models.BooleanField(default=True)
     # screenshots = models.ManyToManyField(Screenshots)
+    link = models.CharField(max_length=500, null=True, blank=True)
     git_repo = models.CharField(max_length=500, null=True, blank=True)
     def __str__(self):
         return str(self.title)
