@@ -57,7 +57,7 @@
                 rel="noopener noreferrer">
                 <i class="bi bi-github" style="font-size: 1.5rem;"></i>
               </a>
-              <a v-if="project.link" :href="project.link" class="mx-2 project-link" target="_blank"
+              <a v-if="project.link" :href="project.link" class="me-2 project-link" target="_blank"
                 rel="noopener noreferrer">
                 <i class="bi bi-box-arrow-up-right" style="font-size: 1.5rem; font-weight: bold;"></i>
               </a>
