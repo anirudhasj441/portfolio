@@ -3,7 +3,8 @@
     <section id="banner" class="container">
       <div class="row h-100">
         <div class="full-height col-lg-6 col-sm-6 order-md-last text-end">
-          <img src="../assets/banner_image.svg" class="animate__animated animate__fadeInRight" alt="" style="max-width: 100%;height: 100%;">
+          <img src="../assets/banner_image.svg" class="animate__animated animate__fadeInRight" alt=""
+            style="max-width: 100%;height: 100%;">
           <a href="https://storyset.com/technology" target="_blank" class="attribution">Technology illustrations by
             Storyset</a>
         </div>
@@ -35,14 +36,14 @@
     <section id="projects" class="container py-3">
       <h1 class="title-text text-center" style="color: var(--color-primary);font-weight: bold;">My Work</h1>
       <div class="project-container mt-5">
-        <div v-for="project, key in projects.slice(0,2)" key="project.title" class="project-row mb-5"
+        <div v-for="project, key in projects.slice(0, 2)" key="project.title" class="project-row mb-5"
           :class="(key + 1) % 2 == 0 ? 'inverted' : ''">
           <div class="project-banner">
             <img :src="backend.getBasePath + project.img" class="w-100" alt="">
           </div>
           <div class="project-detail px-3">
             <div class="project-title">
-              <p class="m-0" >Feature Project</p>
+              <p class="m-0">Feature Project</p>
               <h2 class="mb-3" style="color: var(--color-primary);">{{ project.title }}</h2>
             </div>
             <div class="card-primary rounded-2">
@@ -55,6 +56,10 @@
               <a v-if="project.git_repo" :href="project.git_repo" class="me-2 project-link" target="_blank"
                 rel="noopener noreferrer">
                 <i class="bi bi-github" style="font-size: 1.5rem;"></i>
+              </a>
+              <a v-if="project.link" :href="project.link" class="mx-2 project-link" target="_blank"
+                rel="noopener noreferrer">
+                <i class="bi bi-box-arrow-up-right" style="font-size: 1.5rem; font-weight: bold;"></i>
               </a>
               <RouterLink class="btn btn-sm button-secondary" :to="'/project/' + project.id">Read more</RouterLink>
             </div>
@@ -69,7 +74,7 @@
       <h1 class="title-text text-center" style="color: var(--color-primary);">Contact Me</h1>
       <div class="contacts-row">
         <div v-if="contact.whatsapp_no" class="me-4">
-          <a class="contact-link" :href="'https://wa.me/'+contact.whatsapp_no" target="_blank">
+          <a class="contact-link" :href="'https://wa.me/' + contact.whatsapp_no" target="_blank">
             <i class="bi bi-whatsapp" style="font-size: 3rem;"></i>
           </a>
         </div>
@@ -162,13 +167,14 @@ export default {
 
 #projects {
   min-height: calc(100vh - var(--navbar-height)) !important;
-  
+
 }
+
 #contact {
   min-height: calc(100vh - var(--navbar-height)) !important;
 }
 
-footer { 
+footer {
   background-color: var(--color-background-mute);
 }
 
@@ -210,12 +216,12 @@ footer {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 95%;
   max-width: 600px;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   background-color: var(--color-primary);
 }
 
@@ -233,8 +239,8 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .project-banner {
@@ -259,8 +265,8 @@ footer {
   right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 99;
   /* display: flex;
   flex-direction: column;
@@ -278,8 +284,8 @@ footer {
 .project-row.inverted {
   -webkit-box-orient: horizontal !important;
   -webkit-box-direction: reverse !important;
-      -ms-flex-direction: row-reverse !important;
-          flex-direction: row-reverse !important;
+  -ms-flex-direction: row-reverse !important;
+  flex-direction: row-reverse !important;
 }
 
 .project-row.inverted .project-detail {
@@ -290,8 +296,8 @@ footer {
   left: 0 !important;
   top: 50%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 99;
   /* display: flex;
   flex-direction: column;
@@ -304,8 +310,8 @@ footer {
 
 .project-row.inverted .project-links {
   -webkit-box-pack: start !important;
-      -ms-flex-pack: start !important;
-          justify-content: start !important;
+  -ms-flex-pack: start !important;
+  justify-content: start !important;
 }
 
 .contacts-row {
@@ -338,14 +344,14 @@ footer {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 
   .project-row.inverted .project-links {
     -webkit-box-pack: end !important;
-        -ms-flex-pack: end !important;
-            justify-content: end !important;
+    -ms-flex-pack: end !important;
+    justify-content: end !important;
   }
 
   .card-primary {
@@ -360,8 +366,8 @@ footer {
     height: 100% !important;
     position: relative;
     -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-            transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
   }
 
   .project-detail .project-title {
@@ -392,7 +398,7 @@ footer {
 
 .button-primary:hover {
   -webkit-box-shadow: 0 0 10px var(--color-primary) !important;
-          box-shadow: 0 0 10px var(--color-primary) !important;
+  box-shadow: 0 0 10px var(--color-primary) !important;
 }
 
 .button-secondary {
@@ -405,6 +411,6 @@ footer {
   background-color: var(--color-primary) !important;
   color: var(--vt-c-black-soft) !important;
   -webkit-box-shadow: 0 0 10px var(--color-primary) !important;
-          box-shadow: 0 0 10px var(--color-primary) !important;
+  box-shadow: 0 0 10px var(--color-primary) !important;
 }
 </style>
